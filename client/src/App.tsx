@@ -1,6 +1,5 @@
 import React from "react";
-
-import { Refine, AuthProvider } from "@pankod/refine-core";
+// mui
 import {
   notificationProvider,
   RefineSnackbarProvider,
@@ -10,13 +9,37 @@ import {
   ErrorComponent,
 } from "@pankod/refine-mui";
 
+import {
+  AccountCircleOutlined,
+  ChatBubbleOutline,
+  PeopleAltOutlined,
+  StarOutlineRounded,
+  VillaOutlined,
+} from '@mui/icons-material'
+
+// Dependancies
+import { Refine, AuthProvider } from "@pankod/refine-core";
 import dataProvider from "@pankod/refine-simple-rest";
 import { MuiInferencer } from "@pankod/refine-inferencer/mui";
 import routerProvider from "@pankod/refine-react-router-v6";
 import axios, { AxiosRequestConfig } from "axios";
 import { ColorModeContextProvider } from "contexts";
+
+// Pages
 import { Title, Sider, Layout, Header } from "components/layout";
-import { Login } from "pages/login";
+import {
+  Login,
+  Home,
+  Agents,
+  MyProfile,
+  PropertyDetails,
+  AllProperties,
+  CreateProperty,
+  AgentProfile,
+  EditProperty,
+} from "pages";
+
+// Authentication
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
 
@@ -91,6 +114,7 @@ function App() {
       <CssBaseline />
       <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
       <RefineSnackbarProvider>
+
         <Refine
           dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
           notificationProvider={notificationProvider}
@@ -98,21 +122,41 @@ function App() {
           catchAll={<ErrorComponent />}
           resources={[
             {
-              name: "posts",
+              name: "property",
               list: MuiInferencer,
-              edit: MuiInferencer,
-              show: MuiInferencer,
-              create: MuiInferencer,
-              canDelete: true,
+              icon: <VillaOutlined />
+            },
+            {
+              name: "agent",
+              list: MuiInferencer,
+              icon: <PeopleAltOutlined />
+            },
+            {
+              name: "review",
+              list: MuiInferencer,
+              icon: <StarOutlineRounded />
+            },
+            {
+              name: "message",
+              list: MuiInferencer,
+              icon: <ChatBubbleOutline />
+            },
+            {
+              name: "my-profile",
+              list: MuiInferencer,
+              options: { label: 'My Profile' },
+              icon: <AccountCircleOutlined />
             },
           ]}
-          Title={Title}
-          Sider={Sider}
-          Layout={Layout}
-          Header={Header}
-          routerProvider={routerProvider}
-          authProvider={authProvider}
+
           LoginPage={Login}
+          authProvider={authProvider}
+          routerProvider={routerProvider}
+          DashboardPage={Home}
+          Layout={Layout}
+          Sider={Sider}
+          Header={Header}
+          Title={Title}
         />
       </RefineSnackbarProvider>
     </ColorModeContextProvider>
