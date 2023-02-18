@@ -39,6 +39,7 @@ const Form = ({ type, register, propertyImage, handleImageChange, formLoading, o
                             fullWidth
                             required
                             id='outlined-basic'
+                            placeHolder='Title*'
                             color='info'
                             variant='outlined'
                             {...register('title', { required: true })}
@@ -154,6 +155,7 @@ const Form = ({ type, register, propertyImage, handleImageChange, formLoading, o
                             fullWidth
                             required
                             id="outlined-basic"
+                            placeHolder='Location*'
                             color="info"
                             variant="outlined"
                             {...register('location', { required: true })}
