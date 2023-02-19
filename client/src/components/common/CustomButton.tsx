@@ -5,6 +5,7 @@ import { CustomButtonProps } from 'interfaces/common';
 const CustomButton = ({ type, fullWidth, icon, title, color, backgroundColor, handleClick }: CustomButtonProps) => {
     return (
         <Button
+            type={type === 'submit' ? 'submit' : 'button'}
             sx={{
                 width: fullWidth ? '100%' : 'fit-content',
                 minWidth: 130,
