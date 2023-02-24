@@ -1,0 +1,19 @@
+
+
+
+
+
+    src/
+    └── components/
+        └── FileViewer/ 
+            ├── Directory.js
+            ├── File.js
+            ├── FileContent.js
+            ├── FileViewer.helpers.js
+            ├── FileViewer.js
+            ├── index.js
+            └── Sidebar.js
+
+
+
+
